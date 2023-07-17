@@ -12,6 +12,10 @@
   font-style: normal;
   color: #333333;
 }
+a:link,
+a:visited {
+  text-decoration: none;
+}
 body {
   margin: 0;
   font-family: "Pretendard-Regular";
@@ -145,9 +149,9 @@ span#uemail {
   top: 197px;
   right: 7px;
 }
-#profile-edit:visited{
-    text-decoration:none;
-    color: #333333;
+#profile-edit:visited {
+  text-decoration: none;
+  color: #333333;
 }
 section.history-sec {
   height: 80%;
@@ -172,6 +176,7 @@ div#history-sec-hd {
   background-color: #ffffff;
   border-radius: 9px;
   box-shadow: 0px 2px 2px 2px #dadada;
+  color: #333333;
 }
 
 .main-content-wrap {
@@ -237,8 +242,13 @@ span#time-label {
 div#time-box {
   position: absolute;
   left: 47px;
+  width: 70%;
+  text-align: left;
   font-size: 13px;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .side-content-wrap {
   box-sizing: content-box;

@@ -20,10 +20,20 @@ class PostForm(forms.ModelForm): # 게시글 작성용 폼
     count = forms.IntegerField(label='모집인원')  # 0이상의 정수
     way = forms.CharField(label='이동방식', widget=forms.Select(choices=Board.WAY_CHOICES))
 
+    # def save(self, commit=True):
+    #     board = super().save(commit=False)
+    #     if self.request is not None:
+    #         board.user = self.request.user  # 현재 로그인한 사용자를 할당
+    #     if board.id:
+    #         board.complete = False
+    #     if commit:
+    #         board.save()
+    #     return board
+
     def save(self, commit=True):
         board = super().save(commit=False)
-        if self.request is not None:
-            board.user = self.request.user  # 현재 로그인한 사용자를 할당
+        if not board.pk:  # 새로운 게시글 작성 시에만 작동하도록 조건 추가
+            board.user = self.request.user # 현재 로그인한 사용자를 할당
         if commit:
             board.save()
         return board
@@ -31,9 +41,10 @@ class PostForm(forms.ModelForm): # 게시글 작성용 폼
     class Meta:
         model = Board
         fields = ['title', 'description', 'address', 'start_time', 'startpoint','address_end', 'endpoint', 'count', 'way']
+
     def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
         self.request = kwargs.pop('request', None)  # request 객체를 인스턴스 변수로 저장
+        super(PostForm, self).__init__(*args, **kwargs)
         self.fields['address_end'].widget = forms.Select(choices=Board.DISTRICT_CHOICES)
         self.fields['address'].widget = forms.Select(choices=Board.DISTRICT_CHOICES)
         self.fields['way'].widget = forms.Select(choices=Board.WAY_CHOICES)

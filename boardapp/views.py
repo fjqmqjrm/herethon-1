@@ -37,32 +37,52 @@ def board_detail(request,pk):
 def board_post(request):
     if request.method == 'POST':
         print(request.POST)
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request=request)
         print(form.is_valid())
         if form.is_valid():
-            board = form.save(commit=False)
+            board = form.save(commit=True)
             board.user = request.user
 
             print(board.user)
             board.save()
             return redirect('board_list')
     else:
-        form =PostForm()
+        form =PostForm(request=request)
     return render(request, 'board/board_post.html',{'form':form})
 
+'''
 def board_edit(request, pk):
-    board = Board.objects.get(id=pk)
+    board = get_object_or_404(Board, id=pk)
+    # board = Board.objects.get(id=pk)
+
     if request.method == "POST":
         print(request.POST)
-        form = PostForm(request.POST, instance=board)
+        form = PostForm(request.POST, instance=board, request=request)
+
         print(form.is_valid())
         if form.is_valid():
-            board = form.save(commit=False)
-            board.save()
-            return redirect('board_list')
+            form.save()  # 수정 사항을 반영하고 저장
+            return redirect('board_detail', pk=pk)
     else:
-        form = PostForm(instance=board)
-    return render(request, 'board/board_post.html',{'form': form})
+        form = PostForm(instance=board, request=request)
+
+    return render(request, 'board/board_repost.html', {'form': form, 'pk': pk})
+'''    
+
+def board_repost(request, pk):
+    board = get_object_or_404(Board, id=pk)
+
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=board, request=request)
+
+        if form.is_valid():
+            form.save()  # 수정 사항을 반영하고 저장
+            return redirect('board_detail', pk=pk)
+    else:
+        form = PostForm(instance=board, request=request)
+
+    return render(request, 'board/board_repost.html', {'form': form, 'board': board})
+
 #모집 완료
 def done_list(request):
     dones = Board.objects.filter(complete=True)

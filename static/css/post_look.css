@@ -119,6 +119,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .sec-profile-img img {
@@ -435,6 +436,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .other-profile-img img {

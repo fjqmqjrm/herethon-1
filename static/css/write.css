@@ -16,8 +16,8 @@
   position: relative;
   height: 100%;
   margin: 0 auto;
-  text-align: center;
 }
+
 img {
   width: auto;
   height: 100%;
@@ -113,17 +113,19 @@ p {
 .sec-profile-img {
   width: 44px;
   height: 44px;
-  background-color: white;
   border: none;
   border-radius: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .sec-profile-img img {
-  height: 18px;
-  filter: brightness(85%) saturate(120%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 44px;
 }
 
 .sec-profile-content {
@@ -251,7 +253,9 @@ textarea {
   border: 0;
 }
 
-.select_style {
+#id_address,
+#id_address_end,
+#id_way {
   width: 75px;
   height: 24px;
   border-color: #72a7a8;
@@ -273,7 +277,9 @@ textarea {
   font-family: "Pretendard-Regular";
 }
 
-.select_style option {
+#id_address option,
+#id_address_end option,
+#id_way option {
   background-color: #72a7a8;
   color: #f6f6f6;
 }
