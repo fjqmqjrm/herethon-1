@@ -96,7 +96,7 @@
                 <div class="whitebox">
                   <div class="profile-info-wrap">
                     <span id="nickname">{{ board.user.nickname }}</span>
-                    <span id="uschool">{{ board.user.school_name }}</span>
+                    <span id="uschool">{{ board.user.school_name|slice:"0:3" }}{{ board.user.school_name|slice:"4:5" }}</span>
                   </div>
                   <div class="main-content-wrap">
                     <h1 id="content-title">{{ board.title }}</h1>
