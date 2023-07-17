@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('nickname', models.CharField(max_length=40)),
                 ('school_name', models.CharField(max_length=100)),
                 ('school_photo', models.FileField(upload_to='image/%Y/%m/%d')),
-                ('user_profile', models.FileField(default='profile/user.png', upload_to='profile/%Y/%m/%d')),
+                ('user_profile', models.FileField(default='my_page_update_2.html/user.png', upload_to='my_page_update_2.html/%Y/%m/%d')),
                 ('is_admin', models.BooleanField(default=False)),
                 ('is_active', models.BooleanField(default=False)),
                 ('is_staff', models.BooleanField(default=False)),

@@ -74,7 +74,7 @@ def my_page_update(request, pk) :
             return redirect('board_list')
     else:
         form = UserChangeForm(instance=user)
-    return render(request, "my_page_update.html", {'form': form})
+    return render(request, "my_page_update_2.html", {'form': form})
 @login_required
 def admin_page (request) :
     users = User.object.all()
