@@ -303,6 +303,7 @@ p {
 .id_text {
   margin-left: 10px;
   padding-top: 3px;
+  width: calc(100% - 107.2px);
 }
 
 .id_text p {
