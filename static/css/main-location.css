@@ -12,6 +12,10 @@
   font-style: normal;
   color: #333333;
 }
+a:link,
+a:visited {
+  text-decoration: none;
+}
 body,
 select {
   margin: 0;
@@ -231,6 +235,9 @@ img#profile-img {
   padding-top: 33px;
   text-align: center;
 }
+.profile-info-wrap > a {
+  color: #333333;
+}
 span#nickname {
   font-size: 10px;
   display: block;
@@ -246,6 +253,9 @@ span#uschool {
   margin: 0px;
   margin-top: 11px;
   padding-left: 4%;
+}
+.main-content-wrap > a {
+  color: #333333;
 }
 h1#content-title {
   font-size: 13px;
