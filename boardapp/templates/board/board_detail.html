@@ -62,8 +62,8 @@
           {% if board.user == request.user %}
           <div class="rewrite-delete-write-time">
             <div class="rewrite-delete">
-              <a href="{% url 'board_post' %}"><p>수정</p></a>
-              <p>삭제</p>
+              <a href="{% url 'board_repost' pk=board.id %}"><p>수정</p></a>
+              <a href="{% url 'board_delete' board.id %}"><p>삭제</p></a>
             </div>
             <div class="write-time">
               <p>작성시간</p>

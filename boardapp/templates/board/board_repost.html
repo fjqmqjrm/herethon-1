@@ -7,9 +7,9 @@
       name="viewport"
       content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"
     />
-    <title>ANDO : 게시글</title>
+    <title>ANDO : 게시글 수정</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/write.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/rewrite.css' %}" />
   </head>
   <body>
     <div class="container">
@@ -19,14 +19,14 @@
           alt="뒤로가기"
           onclick="goBack()"
         />
-        <p>게시글 작성</p>
+        <p>게시글 수정</p>
       </header>
 
       <section class="sec-total">
         <section class="sec">
           <form
             method="POST"
-            action="{% url 'board_post' %}"
+            action="{% url 'board_repost' pk=board.id %}"
             name="board"
             onsubmit=""
           >
@@ -36,20 +36,27 @@
                 id="title_text"
                 type="text"
                 name="title"
-                value="{{ form.title.value|default_if_none:'' }}"
-                placeholder="게시글의 제목을 입력해주세요."
+                value="{{ board.title }}"
+                placeholder=""
               />
             </div>
-            <div class="sec-profile">
-              <div class="sec-profile-img">
-                <img src="{{ user.user_profile.url }}" alt="프로필 이미지" />
-              </div>
-              <div class="sec-profile-content">
-                <div class="sec-profile-id">
-                  <p>{{ user.username }}</p>
+            <div class="sec-profile-delete">
+              <div class="sec-profile">
+                <div class="sec-profile-img">
+                  <img src="{{ user.user_profile.url }}" alt="프로필 이미지" />
                 </div>
-                <div class="sec-profile-school">
-                  <p>{{ user.school_name }}</p>
+                <div class="sec-profile-content">
+                  <div class="sec-profile-id">
+                    <p>{{ user.username }}</p>
+                  </div>
+                  <div class="sec-profile-school">
+                    <p>{{ user.school_name }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="delete">
+                <div class="delete-btn">
+                  <a href="{% url 'board_delete' board.id %}"><p>삭제</p></a>
                 </div>
               </div>
             </div>
@@ -66,7 +73,7 @@
                     type="text"
                     name="startpoint"
                     value="{{ form.startpoint.value|default_if_none:'' }}"
-                    placeholder="상세주소 입력"
+                    placeholder=""
                   />
                 </div>
               </div>
@@ -81,7 +88,7 @@
                     type="text"
                     name="endpoint"
                     value="{{ form.endpoint.value|default_if_none:'' }}"
-                    placeholder="상세주소 입력"
+                    placeholder=""
                   />
                 </div>
               </div>
@@ -120,7 +127,7 @@
                     type="text"
                     name="start_time"
                     value="{{ form.start_time.value|default_if_none:''}}"
-                    placeholder="텍스트 입력"
+                    placeholder=""
                   />
                 </div>
               </div>
@@ -133,14 +140,14 @@
                     id="content_text"
                     type="text"
                     name="description"
-                    placeholder="텍스트 입력"
+                    placeholder=""
                   >
 {{ form.description.value|default_if_none:'' }}</textarea
                   >
                 </div>
               </div>
               <div class="write-btn">
-                <input id="write" type="submit" value="등록" />
+                <input id="write" type="submit" value="수정" />
               </div>
             </div>
           </form>
