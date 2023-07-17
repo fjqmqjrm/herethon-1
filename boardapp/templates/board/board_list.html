@@ -89,17 +89,21 @@
             <div class="board-list">
               <!-- 여기 main-whitebox.html 추가 -->
               {% for board in boards %}
-              <a href="{% url 'board_detail' pk=board.pk %}"><div class="box-wrap">
+              <div class="box-wrap">
                 <div class="profile-img-box">
                   <img id="profile-img" src="{{ board.user.user_profile.url }}" />
                 </div>
                 <div class="whitebox">
                   <div class="profile-info-wrap">
-                    <span id="nickname">{{ board.user.nickname }}</span>
+                    <a href="{% url 'account:profile_page' pk=board.pk %}">
+                      <span id="nickname">{{ board.user.nickname }}</span>
+                    </a>
                     <span id="uschool">{{ board.user.school_name|slice:"0:3" }}{{ board.user.school_name|slice:"4:5" }}</span>
                   </div>
                   <div class="main-content-wrap">
+                    <a href="{% url 'board_detail' pk=board.pk %}">
                     <h1 id="content-title">{{ board.title }}</h1>
+                    </a>
                     <div class="location-wrap">
                       <div class="departure-box">
                         <span id="departure">{{ board.address }}</span>
@@ -126,7 +130,6 @@
                   </div>
                 </div>
               </div>
-              </a>
               <table></table>
               {% endfor %}
             </div>
