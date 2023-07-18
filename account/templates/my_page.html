@@ -14,13 +14,13 @@
   <body>
     <div class="container">
       <header class="hd">
-        <img
-          id="back"
-          src="{% static 'image/back.png' %}"
-          alt="back"
-          width="17.5px"
-          onclick="goBack()"
-        />
+        <a href="{% url 'board_list' %}">
+          <img
+            id="back"
+            src="{% static 'image/back.png' %}"
+            alt="back"
+            width="17.5px"
+        /></a>
         <span id="header-title">프로필</span>
       </header>
 
@@ -31,7 +31,7 @@
               <div class="profile-img-box">
                 <img
                   id="profile-img"
-                  src="{% static 'image/profile.jpg' %}"
+                  src="{{ form.user_profile.url }}"
                   width="63px"
                 />
               </div>
@@ -47,7 +47,11 @@
                 </div>
                 <span id="uemail">{{ user.email }}</span>
               </div>
-              <a id="profile-edit" href="{% url 'account:my_page_update' pk=user.id %}">프로필 수정하기</a>
+              <a
+                id="profile-edit"
+                href="{% url 'account:my_page_update' pk=user.id %}"
+                >프로필 수정하기</a
+              >
             </div>
           </section>
 
@@ -60,39 +64,43 @@
                 <!-- 여기서부터 whitebox 추가 -->
                 {% for list in user_posts %}
                 <a href="{% url 'board_detail' pk=list.pk %}">
-                <div class="whitebox">
-                  <div class="main-content-wrap">
-                    <h1 id="content-title">{{ list.title }}</h1>
-                    <div class="location-wrap">
-                      <div class="departure-box">
-                        <span id="departure">{{ list.address }}</span>
+                  <div class="whitebox">
+                    <div class="main-content-wrap">
+                      <h1 id="content-title">{{ list.title }}</h1>
+                      <div class="location-wrap">
+                        <div class="departure-box">
+                          <span id="departure">{{ list.address }}</span>
+                        </div>
+                        <img
+                          id="arrow"
+                          src="{% static 'image/arrow.png' %}"
+                          width="22px"
+                        />
+                        <div class="arrival-box">
+                          <span id="arrival">{{ list.address_end }}</span>
+                        </div>
                       </div>
-                      <img
-                        id="arrow"
-                        src="{% static 'image/arrow.png' %}"
-                        width="22px"
-                      />
-                      <div class="arrival-box">
-                        <span id="arrival">{{ list.address_end }}</span>
+                      <div class="time-wrap">
+                        <span id="time-label">출발 시각</span>
+                        <div id="time-box">
+                          <span id="time">{{ list.start_time}}</span>
+                        </div>
                       </div>
                     </div>
-                    <div class="time-wrap">
-                      <span id="time-label">출발 시각</span>
-                      <div id="time-box"><span id="time">{{ list.start_time}}</span></div>
+                    <div class="side-content-wrap">
+                      <div class="recruitment-box">
+                        <span id="current-recruitment"
+                          >{{ list.countcheck }}</span
+                        >
+                        <span id="slash">/</span>
+                        <span id="total-recruitment">{{ list.count }}</span>
+                      </div>
+                      <div class="transportation-box">
+                        <span id="transportation">{{ list.way }}</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="side-content-wrap">
-                    <div class="recruitment-box">
-                      <span id="current-recruitment">{{ list.countcheck }}</span>
-                      <span id="slash">/</span>
-                      <span id="total-recruitment">{{ list.count }}</span>
-                    </div>
-                    <div class="transportation-box">
-                      <span id="transportation">{{ list.way }}</span>
-                    </div>
-                  </div>
-                </div>
-                  </a>
+                </a>
                 <table></table>
                 {% endfor %}
               </div>
