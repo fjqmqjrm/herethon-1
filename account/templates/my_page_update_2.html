@@ -87,13 +87,14 @@
   <body>
     <div class="container">
       <header class="hd">
+        <a href="{% url 'account:my_page' pk=user.id %}">
         <img
           id="back"
           src="{% static 'image/back.png' %}"
           alt="back"
           width="17.5px"
-          onclick="goBack()"
         />
+      </a>
         <span id="header-title">프로필 수정</span>
       </header>
 
@@ -104,7 +105,7 @@
               <img
                 id="preview"
                 class="profile-img"
-                src="{% static 'image/profile.jpg' %}"
+                src="{{ form.user_profile.url }}"
                 width="63px"
               />
               <div id="profile-preview"></div>
@@ -117,38 +118,40 @@
 
             <div id="file-hide"></div>
           </div>
-          <div class="info-box">
-            <div id="uname" class="info">{{ form.name.value }}</div>
-            <div id="nickname" class="info">{{ form.nickname.value }}</div>
-            <div id="uid" class="info">{{ form.username.value }}</div>
-            <div id="uemail" class="info">{{ form.email.value }}</div>
-            <div id="school" class="info">
-              <div id="uschool">{{ form.school_name.value }}</div>
-              <img
-                class="verified"
-                src="{% static 'image/check.png' %}"
-                width="20px"
-              />
-              <!-- 인증되지 않은 사용자 -->
-              <span class="unverified">인증이 필요합니다</span>
-            </div>
+          <form method="post" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="info-box">
+              <div id="uname" class="info">{{ form.name.value }}</div>
+              <div id="nickname" class="info">{{ form.nickname.value }}</div>
+              <div id="uid" class="info">{{ form.username.value }}</div>
+              <div id="uemail" class="info">{{ form.email.value }}</div>
+              <div id="school" class="info">
+                <div id="uschool">{{ form.school_name.value }}</div>
+                <img
+                  class="verified"
+                  src="{% static 'image/check.png' %}"
+                  width="20px"
+                />
+                <!-- 인증되지 않은 사용자 -->
+                <span class="unverified">인증이 필요합니다</span>
+              </div>
 
-            <span id="file-title">School Photo</span>
-            <input
-              type="file"
-              onchange="setImageFn(this, 'reupload', 'reupload-preview')"
-              id="reupload"
-            />
-            <div id="reupload-preview"></div>
-          </div>
-          <button
-            id="bt-save"
-            type="submit"
-            value="submit"
-            onclick="goToMyPage()"
-          >
-            <span>저장</span>
-          </button>
+              <span id="file-title">School Photo</span>
+              <input
+                type="file"
+                onchange="setImageFn(this, 'reupload', 'reupload-preview')"
+                id="reupload"
+              />
+              <div id="reupload-preview"></div>
+            </div>
+            <button
+              id="bt-save"
+              type="submit"
+              value="submit"
+              onclick="goToMyPage()"
+            >
+              <span>저장</span>
+            </button>
         </form>
       </div>
     </div>

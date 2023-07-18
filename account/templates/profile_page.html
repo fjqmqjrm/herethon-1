@@ -75,12 +75,16 @@
                     </div>
                     <div class="time-wrap">
                       <span id="time-label">출발 시각</span>
-                      <div id="time-box"><span id="time">{{ list.start_time }}</span></div>
+                      <div id="time-box">
+                        <span id="time">{{ list.start_time }}</span>
+                      </div>
                     </div>
                   </div>
                   <div class="side-content-wrap">
                     <div class="recruitment-box">
-                      <span id="current-recruitment">{{ list.countchange }}</span>
+                      <span id="current-recruitment"
+                        >{{ list.countcheck }}</span
+                      >
                       <span id="slash">/</span>
                       <span id="total-recruitment">{{ list.count }}</span>
                     </div>
