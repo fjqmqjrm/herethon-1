@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import User
+from django.contrib.auth.forms import PasswordResetForm as BasePasswordResetForm
 
 
 class UserForm(UserCreationForm):
@@ -30,5 +31,13 @@ class UserChangeForm(UserChangeForm) :
 class PasswordResetForm(forms.Form):
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'placeholder': 'E-mail'})
+    )
+    new_password1 = forms.CharField(
+        label="New Password",
+        widget=forms.PasswordInput(attrs={'placeholder': 'New Password'})
+    )
+    new_password2 = forms.CharField(
+        label="Password Check",
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password Check'})
     )
 
