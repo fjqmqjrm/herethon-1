@@ -1,17 +1,14 @@
-{% if form.errors %}
-    {% for field in form %}
+{% if form.errors %} {% for field in form %}
 <!------------------------- 필드 오류를 출력 -->
-        {% for error in field.errors %}
-            <div class="alert alert-danger">
-                <strong>{{ field.label }}</strong>
-                {{ error }}
-            </div>
-        {% endfor %}
-    {% endfor %}
- <!----------------------- 넌필드 오류를 출력 -->
-    {% for error in form.non_field_errors %}
-        <div class="alert alert-danger">
-            <strong>{{ error }}</strong>
-        </div>
-    {% endfor %}
-{% endif %}
+{% for error in field.errors %}
+<div class="alert alert-danger">
+  <strong>{{ field.label }}</strong>
+  {{ error }}
+</div>
+{% endfor %} {% endfor %}
+<!----------------------- 넌필드 오류를 출력 -->
+{% for error in form.non_field_errors %}
+<div class="alert_alert-danger">
+  <strong>{{ error }}</strong>
+</div>
+{% endfor %} {% endif %}
