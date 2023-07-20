@@ -97,3 +97,22 @@ button#join-bt {
 #join-bt > a {
   color: #333333;
 }
+
+.alert_alert-danger {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.alert_alert-danger strong {
+  font-size: 13px;
+  color: #1c4747;
+  width: 260px;
+  text-align: left;
+}
+
+#uid,
+#upw {
+  outline: none;
+  resize: none;
+}
