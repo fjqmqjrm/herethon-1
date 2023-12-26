@@ -19,7 +19,7 @@
 
 - **개발환경에서의 실행 방법**
     <aside>
-    ⌨️ **install**
+    ⌨️ install
     
     </aside>
     
