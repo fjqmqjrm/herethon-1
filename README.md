@@ -28,7 +28,7 @@
     - `pip install python-dotenv`
     
     <aside>
-    ⌨️ **runserver**
+    ⌨️ runserver
     
     </aside>
     
